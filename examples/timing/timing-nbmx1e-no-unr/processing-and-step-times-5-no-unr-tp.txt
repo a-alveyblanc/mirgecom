@@ -1,0 +1,29 @@
+2025-01-28 21:50:09,252 - INFO - arraycontext.impl.pytato.compile - transform_dag for 'my_rhs_part_0': completed (78.57s wall 1.00x CPU)
+2025-01-28 21:51:06,594 - INFO - arraycontext.impl.pytato.compile - generate_loopy for 'my_rhs_part_0': completed (57.34s wall 1.00x CPU)
+2025-01-28 21:54:02,131 - INFO - arraycontext.impl.pytato.compile - transform_loopy_program for 'my_rhs_part_0': completed (175.54s wall 1.00x CPU)
+2025-01-28 21:54:35,121 - INFO - loopy.preprocess - my_rhs_part_0: preprocess: completed (0.92s wall 1.00x CPU)
+2025-01-28 21:54:46,152 - INFO - loopy.check - my_rhs_part_0: check variable access ordered: completed (0.86s wall 1.00x CPU)
+2025-01-28 21:54:58,517 - INFO - loopy.schedule - my_rhs_part_0: schedule: completed (12.36s wall 1.00x CPU)
+2025-01-28 21:55:14,454 - INFO - loopy.codegen - my_rhs_part_0: generate code: completed (12.09s wall 1.00x CPU)
+2025-01-28 21:55:34,771 - INFO - pyopencl - build program: kernel 'my_rhs_part_0' was part of a lengthy uncached source build (cache disabled by user) (19.26 s)
+------- step walltime: 479.656 s, log walltime: 0.217648 s
+------- step walltime: 10.7308 s, log walltime: 0.0817258 s
+------- step walltime: 1.11374 s, log walltime: 0.119104 s
+------- step walltime: 0.881443 s, log walltime: 5.75059e-05 s
+------- step walltime: 0.889904 s, log walltime: 2.21659e-05 s
+------- step walltime: 0.88084 s, log walltime: 2.27259e-05 s
+------- step walltime: 0.878418 s, log walltime: 2.12418e-05 s
+------- step walltime: 0.895344 s, log walltime: 2.21781e-05 s
+------- step walltime: 0.877698 s, log walltime: 2.2569e-05 s
+------- step walltime: 0.881867 s, log walltime: 2.19489e-05 s
+------- step walltime: 0.895708 s, log walltime: 2.3602e-05 s
+------- step walltime: 2.87867 s, log walltime: 2.3297e-05 s
+------- step walltime: 0.968856 s, log walltime: 0.000112346 s
+------- step walltime: 0.868921 s, log walltime: 2.2576e-05 s
+------- step walltime: 0.867325 s, log walltime: 2.35469e-05 s
+------- step walltime: 0.874353 s, log walltime: 2.1416e-05 s
+------- step walltime: 0.869065 s, log walltime: 2.42081e-05 s
+------- step walltime: 0.867431 s, log walltime: 2.36749e-05 s
+------- step walltime: 0.867289 s, log walltime: 2.28891e-05 s
+------- step walltime: 3.50272 s, log walltime: 2.1636e-05 s
+python -m mpi4py gas-in-box.py -l -d 3 -n -b -m -x 1 -e -y 5 -t  692.60s user 29.63s system 98% cpu 12:14.54 total
