@@ -103,7 +103,8 @@ def main(actx_class, use_esdg=False, use_tpe=False,
          use_av=0, use_limiter=False, order=1,
          nscale=1, npassive_species=0, map_mesh=False,
          rotation_angle=0, add_pulse=False, nsteps=20,
-         mesh_filename=None, euler_timestepping=False):
+         mesh_filename=None, euler_timestepping=False,
+         use_tp_transforms=False):
     """Drive the example."""
     if casename is None:
         casename = "gas-in-box"
@@ -120,7 +121,7 @@ def main(actx_class, use_esdg=False, use_tpe=False,
         filename=f"{casename}.sqlite", mode="wu", mpi_comm=comm)
 
     from mirgecom.array_context import initialize_actx, actx_class_is_profiling
-    use_tp_transforms = use_tpe and not use_overintegration
+    use_tp_transforms = use_tp_transforms and (use_tpe and not use_overintegration)
     actx = initialize_actx(actx_class, comm,
                            use_axis_tag_inference_fallback=use_tpe,
                            use_einsum_inference_fallback=use_tpe,
@@ -184,7 +185,7 @@ def main(actx_class, use_esdg=False, use_tpe=False,
                 dim = 2
             nscale = max(nscale, 1)
             scale_fac = pow(float(nscale), 1.0/dim)
-            nel_1d = int(scale_fac*24/dim)
+            nel_1d = int(scale_fac*128/dim)
             from mirgecom.simutil import get_box_mesh
             box_ll = -1
             box_ur = 1
@@ -801,6 +802,7 @@ if __name__ == "__main__":
                         help="name of thermochemical mechanism yaml file")
     parser.add_argument("--meshfile", type=str,
                         help="name of gmsh input file")
+    parser.add_argument("--use-tp-transforms", action="store_true")
     args = parser.parse_args()
 
     from warnings import warn
@@ -834,6 +836,8 @@ if __name__ == "__main__":
          use_navierstokes=args.navierstokes, npassive_species=args.species,
          nscale=args.weak_scale, mech_name=args.mechanism_name,
          map_mesh=args.wonky, rotation_angle=args.rotate, add_pulse=args.pulse,
-         mesh_filename=args.meshfile, euler_timestepping=args.euler_timestepping)
+         mesh_filename=args.meshfile,
+         euler_timestepping=args.euler_timestepping,
+         use_tp_transforms=args.use_tp_transforms)
 
 # vim: foldmethod=marker
